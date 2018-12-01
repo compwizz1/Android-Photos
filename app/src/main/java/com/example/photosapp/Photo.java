@@ -2,7 +2,7 @@ package com.example.photosapp;
 
 import android.media.Image;
 
-import javax.activation.MimetypesFileTypeMap;
+//import javax.activation.MimetypesFileTypeMap;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.*;
@@ -91,7 +91,7 @@ public class Photo implements Serializable
      * This method gets the image associated with a photo pbject
      * @return Image associated with the photo
      */
-    public Image getImage() {
+   /* public Image getImage() {
         File f = new File(pathName);
         String mimetype= new MimetypesFileTypeMap().getContentType(f);
         String type = mimetype.split("/")[0];
@@ -99,7 +99,7 @@ public class Photo implements Serializable
             return new Image(this.file + this.pathName);
         }
         return null;
-    }
+    }*/
 
     /**
      * Path name

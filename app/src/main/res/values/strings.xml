@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PhotosApp</string>
+    <string name="please_enter_a_new_album_name">Please Enter a New Album Name</string>
 </resources>
