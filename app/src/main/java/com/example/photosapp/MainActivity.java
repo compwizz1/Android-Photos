@@ -7,7 +7,8 @@ import android.widget.ArrayAdapter;
 
 import java.util.List;
 import android.widget.ListView;
-
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,10 +17,15 @@ public class MainActivity extends AppCompatActivity {
 
     List<Album> albumList = user.getAlbumList();
 
+    private Button create, open;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        create = findViewById(R.id.create);
+        open = findViewById(R.id.open);
 
 
         listview = findViewById(R.id.listview);
@@ -32,6 +38,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void showAlbum(int index)
     {
+
+    }
+
+    public void Create(View view)
+    {
+        Intent intent = new Intent(this, CreateAlbum.class);
+        startActivityForResult(intent, 1);
+
+    }
+
+    public void Open(View view)
+    {
+
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent)
+    {
+        if (resultCode != RESULT_OK) {
+            return;
+        }
 
     }
 }
