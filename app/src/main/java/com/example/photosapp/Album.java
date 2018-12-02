@@ -2,9 +2,9 @@ package com.example.photosapp;
 
 
 import java.io.*;
-import java.time.LocalDate;
+
 import java.util.ArrayList;
-import java.util.Calendar;
+
 import java.util.List;
 
 /**
@@ -38,16 +38,6 @@ public class Album implements Serializable{
     public int numOfPhotos;
 
     /**
-     * The date of the photo in the album with the earliest date
-     */
-    LocalDate earliest;
-
-    /**
-     * The date of the photo in the album with the latest date
-     */
-    LocalDate latest;
-
-    /**
      * The
      * @param albumName
      */
@@ -78,22 +68,7 @@ public class Album implements Serializable{
     {
         album.add(pic);
         numOfPhotos = album.size();
-        if(earliest == null)
-        {
-            earliest = pic.getDate();
-        }
-        if(latest == null)
-        {
-            latest = pic.getDate();
-        }
-        else if(earliest.isAfter(pic.getDate()))
-        {
-            earliest = pic.getDate();
-        }
-        else if(latest.isBefore(pic.getDate()))
-        {
-            latest = pic.getDate();
-        }
+
         return true;
     }
 
@@ -117,39 +92,9 @@ public class Album implements Serializable{
      */
     public void removePhoto(Photo pic)
     {
-        if(!pic.getDate().isEqual(earliest) && !pic.getDate().isEqual(latest))
-        {
             album.remove(pic);
             numOfPhotos = album.size();
             return;
-        }
-        if(album.size()==1)
-        {
-
-            earliest = null;
-            latest = null;
-            album.remove(pic);
-            numOfPhotos --;
-
-            return;
-        }
-        else {
-            album.remove(pic);
-            numOfPhotos --;
-            earliest = album.get(0).getDate();
-            latest = album.get(0).getDate();
-            for(Photo x: album)
-            {
-                if(x.getDate().isBefore(earliest))
-                {
-                    earliest = x.getDate();
-                }
-                if(x.getDate().isAfter(latest))
-                {
-                    latest = x.getDate();
-                }
-            }
-        }
 
     }
 
@@ -197,16 +142,8 @@ public class Album implements Serializable{
      */
     public String AlbumDetails()
     {
-        String e = " ";
-        String l = " ";
-        if(earliest != null)
-        {
-            e = earliest.toString();
-        }
-        if(latest != null)
-            l = latest.toString();
 
-        String x = "Name: " + name.toString() + "\n# of photos: " + numOfPhotos + "\nDate Range: " + e + " - " + l + " ";
+        String x = "Name: " + name.toString() + "\n# of photos: " + numOfPhotos;
         return x;
     }
 

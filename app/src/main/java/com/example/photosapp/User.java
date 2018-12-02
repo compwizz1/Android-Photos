@@ -42,9 +42,8 @@ public class User implements Serializable {
      * The constructor used to initialize the user data
      * @param username The new username for the user
      */
-    public User(String username)
+    public User()
     {
-        this.username = username;
         albumList = new ArrayList<Album>();
         tagTypes = new ArrayList<String>();
         tagTypes.add("location");
