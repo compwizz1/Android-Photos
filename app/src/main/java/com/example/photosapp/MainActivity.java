@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showAlbum(int index)
     {
-        info.setText(listview.getAdapter().getItem(index).toString());
+        info.setText(albumList.get(index).toString());
     }
 
     public void Create(View view)
