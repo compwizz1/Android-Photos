@@ -50,7 +50,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
         android:onClick="Create"
         android:text="@string/create_album"
         app:layout_constraintBaseline_toBaselineOf="@+id/button3"
