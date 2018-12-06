@@ -8,35 +8,6 @@
 
     <Button
         android:id="@+id/open"
-<<<<<<< HEAD
-        android:layout_width="116dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="444dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="6dp"
-        android:onClick="Open"
-        android:text="Open Album"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.539"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.166" />
-
-    <TextView
-        android:id="@+id/info"
-        android:layout_width="313dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="52dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.744" />
-=======
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -48,7 +19,6 @@
         app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent" />
->>>>>>> 08212c14ddaef1ba123e81486077e2e6c8fa0e63
 
     <ListView
         android:id="@+id/listview"
@@ -71,28 +41,15 @@
         android:layout_marginEnd="16dp"
         android:text="@string/albumview_title"
         android:textAlignment="center"
-<<<<<<< HEAD
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-=======
->>>>>>> 08212c14ddaef1ba123e81486077e2e6c8fa0e63
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/create"
-<<<<<<< HEAD
-        android:layout_width="127dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="444dp"
-=======
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
->>>>>>> 08212c14ddaef1ba123e81486077e2e6c8fa0e63
-        android:layout_marginEnd="8dp"
         android:onClick="Create"
         android:text="@string/create_album"
         app:layout_constraintBaseline_toBaselineOf="@+id/button3"
@@ -136,19 +93,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/create" />
-
-    <Button
-        android:id="@+id/remove"
-        android:layout_width="109dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="12dp"
-        android:onClick="Remove"
-        android:text="Remove"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/create" />
 
 </android.support.constraint.ConstraintLayout>
