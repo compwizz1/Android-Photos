@@ -4,10 +4,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 
 public class CreateAlbum extends AppCompatActivity {
 
-    private EditText name;
+    private EditText AlbumNames;
+    private Album album;
+    private User user;
+
+    ListView listview;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,8 +23,7 @@ public class CreateAlbum extends AppCompatActivity {
 
     public void Confirm(View view)
     {
-
-
+        ss
     }
 
     public void Cancel(View view)
