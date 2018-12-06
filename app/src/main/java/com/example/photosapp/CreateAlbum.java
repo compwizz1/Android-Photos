@@ -8,7 +8,7 @@ import android.widget.ListView;
 
 public class CreateAlbum extends AppCompatActivity {
 
-    private EditText AlbumNames;
+    private EditText AlbumName;
     private Album album;
     private User user;
 
@@ -23,7 +23,16 @@ public class CreateAlbum extends AppCompatActivity {
 
     public void Confirm(View view)
     {
-        ss
+        if(user.hasAlbumName(AlbumName.getText().toString()))
+        {
+            return;
+        }
+        else{
+            user.addAlbum(AlbumName.getText().toString());
+            setResult(RESULT_OK);
+
+        }
+
     }
 
     public void Cancel(View view)

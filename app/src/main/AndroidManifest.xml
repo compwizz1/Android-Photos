@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".CreateAlbum"></activity>
+        <activity android:name=".RemoveAlbum"></activity>
 
     </application>
 
