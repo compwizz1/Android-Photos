@@ -5,12 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class CreateAlbum extends AppCompatActivity {
 
     private EditText AlbumName;
     private Album album;
     private User user;
+
+    TextView error;
 
     ListView listview;
 
@@ -30,7 +33,6 @@ public class CreateAlbum extends AppCompatActivity {
         else{
             user.addAlbum(AlbumName.getText().toString());
             setResult(RESULT_OK);
-
         }
 
     }

@@ -9,15 +9,17 @@ import java.util.List;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     ListView listview;
+    TextView info;
     User user = new User();
 
     List<Album> albumList = user.getAlbumList();
 
-    private Button create, open;
+    private Button create, open, remove;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showAlbum(int index)
     {
-
+        info.setText(listview.getAdapter().getItem(index).toString());
     }
 
     public void Create(View view)
@@ -49,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Open(View view)
+    {
+
+    }
+
+    public void Remove(View view)
     {
 
     }
