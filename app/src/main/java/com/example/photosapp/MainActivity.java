@@ -9,12 +9,13 @@ import java.util.List;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     ListView listview;
     User user = new User();
-
+    TextView info;
     List<Album> albumList = user.getAlbumList();
 
     private Button create, open;
@@ -38,11 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void showAlbum(int index)
     {
-<<<<<<< HEAD
         info.setText(albumList.get(index).toString());
-=======
 
->>>>>>> f1fb3583cc8d940ac232b9d3c0aeab6a8a3d8f8f
     }
 
     public void Create(View view)
