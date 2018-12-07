@@ -4,8 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
 import java.util.List;
-import java.util.*;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.Button;
@@ -13,10 +14,11 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListView listview;
-    private User user = new User();
-    private TextView info;
-    private List<Album> albumList = user.getAlbumList();
+    ListView listview;
+    User user = new User();
+    TextView info;
+    List<Album> albumList = user.getAlbumList();
+    int index;
 
     private Button create, open, rename, remove, search;
 
@@ -31,31 +33,30 @@ public class MainActivity extends AppCompatActivity {
         remove = findViewById(R.id.remove);
         search = findViewById(R.id.search);
 
-        albumList.add(new Album("hello"));
-        albumList.add(new Album("second"));
-        listview = (ListView) findViewById(R.id.listview);
-        listview.setAdapter(
-                new ArrayAdapter<Album>(this, R.layout.album_text, albumList));
-
+        info = findViewById(R.id.info);
+        //String[] mobileArray = {"Android","IPhone","WindowsMobile","Blackberry",
+        //        "WebOS","Ubuntu","Windows7","Max OS X"};
+        listview = findViewById(R.id.listview);
+        albumList.add(new Album("alb111"));
+        albumList.add(new Album("album2222"));
+        ArrayAdapter adapter = new ArrayAdapter<Album>(this, R.layout.album_text, albumList);
+        listview.setAdapter(adapter);
         // show album for possible edit when tapped
         listview.setSelection(0);
-        listview.setOnItemClickListener((p, V, pos, id) -> showAlbum(pos));
+        //listview.setOnItemClickListener((p, V, pos, id) -> showAlbum(pos));
     }
 
-    public void showAlbum(int index)
+    public void SelectAlbum(int position)
     {
-        info.setText(albumList.get(index).toString());
+        index = position;
 
     }
 
     public void Create(View view)
     {
 
-        Bundle bundle = new Bundle();
-        bundle.putInt("ACTION", 1);
         Intent intent = new Intent(this, CreateAlbum.class);
-        intent.putExtras(bundle);
-        intent.putExtra("user", user);
+        intent.putExtra("extra_user", user);
         startActivityForResult(intent, 1);
 
     }
@@ -67,14 +68,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void Rename(View view)
     {
-        Bundle bundle = new Bundle();
-        bundle.putString(CreateAlbum.Album_Name, info.getText().toString());
-        bundle.putInt("ACTION", 2);
+        Album selected = albumList.get(index);
         Intent intent = new Intent(this, CreateAlbum.class);
-        intent.putExtras(bundle);
         intent.putExtra("extra_user", user);
-        intent.putExtra("extra_album", user);
-        startActivityForResult(intent, 2);
+        intent.putExtra("extra_album", selected);
+        startActivityForResult(intent, 1);
 
     }
 
@@ -83,14 +81,11 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode != RESULT_OK) {
             return;
         }
-        user = (User) intent.getSerializableExtra("user");
+        user = (User) intent.getSerializableExtra("extra_user");
         albumList = user.getAlbumList();
         listview = findViewById(R.id.listview);
-        listview.setAdapter(
-                new ArrayAdapter<Album>(this, R.layout.activity_main, albumList));
-        listview.setSelection(0);
-        listview.setOnItemClickListener((p, V, pos, id) -> showAlbum(pos));
-
+        ArrayAdapter adapter = new ArrayAdapter<Album>(this, R.layout.album_text, albumList);
+        listview.setAdapter(adapter);
 
     }
 }

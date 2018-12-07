@@ -6,10 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
+
 import android.widget.TextView;
 
-public class CreateAlbum extends AppCompatActivity {
+public class RenameAlbum extends AppCompatActivity {
 
     private EditText AlbumName;
     private Album album;
@@ -18,8 +18,6 @@ public class CreateAlbum extends AppCompatActivity {
     Button confirm, cancel;
 
     TextView error;
-
-    ListView listview;
 
 
     @Override
@@ -32,8 +30,8 @@ public class CreateAlbum extends AppCompatActivity {
         error = findViewById(R.id.error);
         AlbumName = findViewById(R.id.AlbumName);
         user = (User) getIntent().getSerializableExtra("extra_user");
-
-
+        album = (Album) getIntent().getSerializableExtra("extra_album");
+        AlbumName.setText(album.getName(),TextView.BufferType.EDITABLE);
 
     }
 
@@ -50,7 +48,7 @@ public class CreateAlbum extends AppCompatActivity {
                 error.setText("Error. Album name already Exists");
                 return;
             } else {
-                user.addAlbum(AlbumName.getText().toString());
+                album.rename(AlbumName.getText().toString());
                 Intent intent = new Intent();
                 intent.putExtra("extra_user", user);
                 setResult(RESULT_OK, intent);
@@ -66,3 +64,4 @@ public class CreateAlbum extends AppCompatActivity {
         finish();
     }
 }
+
