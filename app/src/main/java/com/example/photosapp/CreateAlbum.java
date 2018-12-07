@@ -1,5 +1,6 @@
 package com.example.photosapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -26,15 +27,17 @@ public class CreateAlbum extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_album);
-         user = new User();
-        AlbumName = findViewById(R.id.name);
+        user = new User();
+        AlbumName = findViewById(R.id.AlbumName);
 
         Bundle bundle = getIntent().getExtras();
         ACTION = bundle.getInt("ACTION");
         if (ACTION == 2) {
+            album = (Album) getIntent().getSerializableExtra("album");
             AlbumName.setText(bundle.getString(Album_Name));
+
         }
-        album = user.getAlbumFromName(bundle.getString(Album_Name));
+        user = (User) getIntent().getSerializableExtra("user");
 
 
 
@@ -48,7 +51,9 @@ public class CreateAlbum extends AppCompatActivity {
                 return;
             } else {
                 user.addAlbum(AlbumName.getText().toString());
-                setResult(RESULT_OK);
+                Intent intent = new Intent();
+                intent.putExtra("user", user);
+                setResult(RESULT_OK, intent);
                 finish();
             }
         }
@@ -60,7 +65,9 @@ public class CreateAlbum extends AppCompatActivity {
             }
             else {
                 album.rename(AlbumName.getText().toString());
-                setResult(RESULT_OK);
+                Intent intent = new Intent();
+                intent.putExtra("user", user);
+                setResult(RESULT_OK, intent);
                 finish();
             }
 

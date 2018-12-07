@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     TextView info;
     List<Album> albumList = user.getAlbumList();
 
-    private Button create, open;
+    private Button create, open, rename, remove, search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +27,17 @@ public class MainActivity extends AppCompatActivity {
 
         create = findViewById(R.id.create);
         open = findViewById(R.id.open);
+        rename = findViewById(R.id.rename);
+        remove = findViewById(R.id.remove);
+        search = findViewById(R.id.search);
 
 
         listview = findViewById(R.id.listview);
         listview.setAdapter(
                 new ArrayAdapter<Album>(this, R.layout.activity_main, albumList));
 
-        // show movie for possible edit when tapped
+        // show album for possible edit when tapped
+        listview.setSelection(0);
         listview.setOnItemClickListener((p, V, pos, id) -> showAlbum(pos));
     }
 
@@ -45,10 +49,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void Create(View view)
     {
+
         Bundle bundle = new Bundle();
         bundle.putInt("ACTION", 1);
         Intent intent = new Intent(this, CreateAlbum.class);
         intent.putExtras(bundle);
+        intent.putExtra("user", user);
         startActivityForResult(intent, 1);
 
     }
@@ -65,14 +71,23 @@ public class MainActivity extends AppCompatActivity {
         bundle.putInt("ACTION", 2);
         Intent intent = new Intent(this, CreateAlbum.class);
         intent.putExtras(bundle);
+        intent.putExtra("user", user);
+        intent.putExtra("album", user);
         startActivityForResult(intent, 2);
 
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent intent)
     {
+        if (resultCode != RESULT_OK) {
+            return;
+        }
+        user = (User) intent.getSerializableExtra("user");
+        albumList = user.getAlbumList();
+        listview = findViewById(R.id.listview);
         listview.setAdapter(
                 new ArrayAdapter<Album>(this, R.layout.activity_main, albumList));
+
 
     }
 }
