@@ -149,6 +149,18 @@ public class User implements Serializable {
         return false;
     }
 
+    public Album getAlbumFromName(String newAlbum)
+    {
+        for(Album a: albumList)
+        {
+            if(a.getName().equals(newAlbum))
+            {
+                return a;
+            }
+        }
+        return null;
+    }
+
     /**
      * 	Get Users Tag Types
      *

@@ -45,7 +45,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void Create(View view)
     {
+        Bundle bundle = new Bundle();
+        bundle.putInt("ACTION", 1);
         Intent intent = new Intent(this, CreateAlbum.class);
+        intent.putExtras(bundle);
         startActivityForResult(intent, 1);
 
     }
@@ -55,11 +58,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void Rename(View view)
+    {
+        Bundle bundle = new Bundle();
+        bundle.putString(CreateAlbum.Album_Name, info.getText().toString());
+        bundle.putInt("ACTION", 2);
+        Intent intent = new Intent(this, CreateAlbum.class);
+        intent.putExtras(bundle);
+        startActivityForResult(intent, 2);
+
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent intent)
     {
-        if (resultCode != RESULT_OK) {
-            return;
-        }
+        listview.setAdapter(
+                new ArrayAdapter<Album>(this, R.layout.activity_main, albumList));
 
     }
 }
