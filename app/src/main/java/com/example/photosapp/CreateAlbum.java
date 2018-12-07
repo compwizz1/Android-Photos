@@ -21,30 +21,32 @@ public class CreateAlbum extends AppCompatActivity {
     ListView listview;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_album);
-        user = new User();
-        AlbumName = findViewById(R.id.AlbumName);
 
         Bundle bundle = getIntent().getExtras();
         ACTION = bundle.getInt("ACTION");
+
+        user = (User) getIntent().getSerializableExtra("extra_user");
         if (ACTION == 2) {
-            album = (Album) getIntent().getSerializableExtra("album");
+            album = (Album) getIntent().getSerializableExtra("extra_album");
             AlbumName.setText(bundle.getString(Album_Name));
 
         }
-        user = (User) getIntent().getSerializableExtra("user");
-
 
 
     }
 
     public void Confirm(View view)
     {
+        String newName = AlbumName.getText().toString();
+        if(newName == null || newName.length()<1)
+        {
+            error.setText("Error, Please enter a name");
+            return;
+        }
         if(ACTION ==1) {
             if (user.hasAlbumName(AlbumName.getText().toString())) {
                 error.setText("Error. Album name already Exists");
