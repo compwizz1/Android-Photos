@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     public void Rename(View view)
     {
         Album selected = albumList.get(index);
-        Intent intent = new Intent(this, CreateAlbum.class);
+        Intent intent = new Intent(this, RenameAlbum.class);
         intent.putExtra("extra_user", user);
         intent.putExtra("extra_album", selected);
         startActivityForResult(intent, 1);

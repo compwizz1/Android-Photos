@@ -23,7 +23,7 @@ public class RenameAlbum extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_album);
+        setContentView(R.layout.rename_album);
 
         confirm = findViewById(R.id.create);
         cancel = findViewById(R.id.cancel);
