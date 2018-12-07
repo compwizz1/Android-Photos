@@ -7,4 +7,5 @@
     <string name="rename_album">Rename</string>
     <string name="albumview_title">User\'s albums</string>
     <string name="search">Search Photos</string>
+    <string name="rename_instructions">Please enter the new name for the album</string>
 </resources>

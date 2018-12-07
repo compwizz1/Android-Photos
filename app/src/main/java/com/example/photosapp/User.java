@@ -1,4 +1,10 @@
 package com.example.photosapp;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,10 +44,24 @@ public class User implements Serializable {
      */
     private List<String> tagTypes;
 
+
+    public static void writeUser(User ul) throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(
+                new FileOutputStream(storeDir + File.separator + storeFile));
+        oos.writeObject(ul);
+        oos.close();
+    }
+    public static User readUser() throws IOException, ClassNotFoundException {
+        ObjectInputStream ois = new ObjectInputStream(
+                new FileInputStream(storeDir + File.separator + storeFile));
+        User ul = (User)ois.readObject();
+        ois.close();
+        return ul;
+    }
     /**
      * The constructor used to initialize the user data
-     * @param username The new username for the user
      */
+
     public User()
     {
         albumList = new ArrayList<Album>();
@@ -54,7 +74,7 @@ public class User implements Serializable {
      * Get Username
      *
      * This method returns the username for the current user
-     * @return
+     * @return the username as a string
      */
     public String getUserName()
     {
@@ -123,7 +143,7 @@ public class User implements Serializable {
      * Remove Album
      *
      * This method takes in an album as a parameter and removes it from the current list of albums
-     * @param rem
+     * @param rem removes an album
      */
     public void removeAlbum(Album rem)
     {
