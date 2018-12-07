@@ -1,11 +1,17 @@
 <resources>
-    <string name="app_name">PhotosApp</string>
-    <string name="please_enter_a_new_album_name">Please enter a new album name</string>
-    <string name="open_album">Open</string>
-    <string name="create_album">New Album</string>
-    <string name="delete_album">Delete</string>
-    <string name="rename_album">Rename</string>
-    <string name="albumview_title">User\'s albums</string>
-    <string name="search">Search Photos</string>
-    <string name="rename_instructions">Please enter the new name for the album</string>
+    <string name="app_name" translatable="false">PhotosApp</string>
+    <string name="please_enter_a_new_album_name" translatable="false">Please enter a new album name</string>
+    <string name="open_album" translatable="false">Open</string>
+    <string name="create_album" translatable="false">New Album</string>
+    <string name="delete_album" translatable="false">Delete</string>
+    <string name="rename_album" translatable="false">Rename</string>
+    <string name="albumview_title" translatable="false">User\'s albums</string>
+    <string name="search" translatable="false">Search Photos</string>
+    <string name="rename_instructions" translatable="false">Please enter the new name for the album</string>
+    <string name="add" translatable="false">Add</string>
+    <string name="tag" translatable="false">Add Tag</string>
+    <string name="remove" translatable="false">Remove</string>
+    <string name="display" translatable="false">Display</string>
+    <string name="photos_title" translatable="false">Photos in this album + commands</string>
+    <string name="move" translatable="false">Move</string>
 </resources>
