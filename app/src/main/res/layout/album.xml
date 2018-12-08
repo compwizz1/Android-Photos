@@ -9,19 +9,24 @@
         android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="20dp"
+        android:onClick="Add"
         android:text="@string/add"
         app:layout_constraintBottom_toTopOf="@+id/display"
         app:layout_constraintEnd_toStartOf="@+id/slideshow"
         app:layout_constraintHorizontal_bias="0.484"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/back"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/remove"
+        android:layout_width="90dp"
+        android:layout_height="42dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:onClick="Remove"
         android:text="@string/remove"
         app:layout_constraintBaseline_toBaselineOf="@+id/display"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,6 +37,7 @@
         android:id="@+id/move"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="Move"
         android:text="@string/move"
         app:layout_constraintBaseline_toBaselineOf="@+id/slideshow"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,15 +46,20 @@
 
     <Button
         android:id="@+id/display"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="87dp"
+        android:layout_height="44dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="436dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="Display"
         android:text="@string/display"
-        app:layout_constraintEnd_toStartOf="@+id/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/remove"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="440dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ListView
         android:id="@+id/photoList"
@@ -79,7 +90,29 @@
         android:id="@+id/slideshow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="SlideShow"
         android:text="Slideshow Mode"
-        app:layout_constraintBaseline_toBaselineOf="@+id/add"
-        tools:layout_editor_absoluteX="121dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="368dp" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="308dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="Back"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>

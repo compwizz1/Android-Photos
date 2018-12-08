@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         create = findViewById(R.id.create);
         open = findViewById(R.id.previous);
         rename = findViewById(R.id.next);
-        remove = findViewById(R.id.back);
+        remove = findViewById(R.id.remove);
         search = findViewById(R.id.search);
 
         info = findViewById(R.id.info);
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AlbumView.class);
         intent.putExtra("extra_user", user);
         intent.putExtra("extra_album", selected);
-        startActivityForResult(intent, 1);
+        startActivity(intent);
     }
 
     public void Rename(View view)
