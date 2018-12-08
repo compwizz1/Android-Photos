@@ -25,7 +25,7 @@ public class RenameAlbum extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rename_album);
 
-        confirm = findViewById(R.id.create);
+        confirm = findViewById(R.id.confirm);
         cancel = findViewById(R.id.cancel);
         error = findViewById(R.id.error);
         AlbumName = findViewById(R.id.AlbumName);

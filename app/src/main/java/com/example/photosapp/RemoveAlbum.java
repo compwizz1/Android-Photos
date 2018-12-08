@@ -23,7 +23,7 @@ public class RemoveAlbum extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.remove_album);
 
-        confirm = findViewById(R.id.create);
+        confirm = findViewById(R.id.confirm);
         cancel = findViewById(R.id.cancel);
         error = findViewById(R.id.error);
         current = findViewById(R.id.current);
@@ -35,12 +35,11 @@ public class RemoveAlbum extends AppCompatActivity {
 
     public void Confirm(View view)
     {
-            user.removeAlbum(album);
-            Intent intent = new Intent();
-            intent.putExtra("extra_user", user);
-            setResult(RESULT_OK, intent);
-            finish();
-
+        user.removeAlbum(album);
+        Intent intent = new Intent();
+        intent.putExtra("extra_user", user);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     public void Cancel(View view)
