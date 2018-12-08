@@ -37,12 +37,13 @@
         android:id="@+id/move"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="368dp"
         android:onClick="Move"
         android:text="@string/move"
-        app:layout_constraintBaseline_toBaselineOf="@+id/slideshow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/slideshow" />
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@+id/slideshow"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/display"
@@ -91,13 +92,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="132dp"
+        android:layout_marginTop="368dp"
         android:layout_marginEnd="8dp"
         android:onClick="SlideShow"
         android:text="Slideshow Mode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="368dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/back"
