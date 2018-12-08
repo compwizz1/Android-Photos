@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import android.widget.ListView;
 import android.view.View;
@@ -34,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
 		}
 
         create = findViewById(R.id.create);
-        open = findViewById(R.id.open);
-        rename = findViewById(R.id.rename);
-        remove = findViewById(R.id.remove);
+        open = findViewById(R.id.previous);
+        rename = findViewById(R.id.next);
+        remove = findViewById(R.id.back);
         search = findViewById(R.id.search);
 
         info = findViewById(R.id.info);
