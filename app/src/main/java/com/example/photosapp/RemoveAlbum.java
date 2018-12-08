@@ -35,9 +35,10 @@ public class RemoveAlbum extends AppCompatActivity {
 
     public void Confirm(View view)
     {
-        user.removeAlbum(album);
+        user.removeAlbum(user.getAlbumFromName(album.getName()));
         Intent intent = new Intent();
         intent.putExtra("extra_user", user);
+        intent.putExtra("extra_album", album);
         setResult(RESULT_OK, intent);
         finish();
     }

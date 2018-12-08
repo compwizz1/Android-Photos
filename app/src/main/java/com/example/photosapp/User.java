@@ -153,6 +153,7 @@ public class User implements Serializable {
             if (x.getName() == rem.getName())
             {
                 albumList.remove(index);
+                return;
             }
             index++;
         }
