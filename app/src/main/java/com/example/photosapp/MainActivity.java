@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AlbumView.class);
         intent.putExtra("extra_user", user);
         intent.putExtra("extra_album", selected);
-        startActivityForResult(intent, 1);
+        startActivity(intent);
     }
 
     public void Rename(View view)

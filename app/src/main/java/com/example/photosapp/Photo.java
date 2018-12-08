@@ -1,5 +1,6 @@
 package com.example.photosapp;
 
+import android.graphics.Bitmap;
 import android.media.Image;
 
 //import javax.activation.MimetypesFileTypeMap;
@@ -67,22 +68,30 @@ public class Photo implements Serializable
      */
     private LocalDate localdate;
 
+    private Bitmap pic;
+
 
     /**
      * The constructor used to initialize a new photo. This sets the date of the photo and gets the file location.
      * @param pathName The path file for the photo
      */
-    public Photo(String pathName)
+    public Photo(Bitmap bitmap)
     {
-        this.pathName = pathName;
-        File f = new File(pathName);
-        this.modifiedRaw = f.lastModified();
-        this.modifiedReadable = sdf.format(this.modifiedRaw);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
-        localdate = LocalDate.parse(modifiedReadable, formatter);
+        //this.pathName = pathName;
+        //File f = new File(pathName);
+        //this.modifiedRaw = f.lastModified();
+        //this.modifiedReadable = sdf.format(this.modifiedRaw);
+        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
+        //localdate = LocalDate.parse(modifiedReadable, formatter);
         this.caption = "";
         this.tags = new ArrayList<Tag>();
+        pic = bitmap;
 
+    }
+
+    public Bitmap getPic()
+    {
+        return pic;
     }
 
     /**
