@@ -14,7 +14,7 @@
         android:layout_marginBottom="140dp"
         android:background="@color/colorPrimary"
         android:onClick="Confirm"
-        android:text="Confirm"
+        android:text="@string/confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -27,7 +27,7 @@
         android:layout_marginEnd="8dp"
         android:background="@color/colorPrimary"
         android:onClick="Cancel"
-        android:text="Cancel"
+        android:text="@string/cancel"
         app:layout_constraintBaseline_toBaselineOf="@+id/confirm"
         app:layout_constraintEnd_toStartOf="@+id/confirm"
         app:layout_constraintHorizontal_bias="0.5"
@@ -40,35 +40,43 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/rename_instructions"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/AlbumName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
 
     <TextView
         android:id="@+id/error"
         android:layout_width="319dp"
         android:layout_height="65dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/cancel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/AlbumName" />
 
     <EditText
         android:id="@+id/AlbumName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="111dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
-        android:hint="New Album Name"
+        android:hint="@string/new_album_hint"
         android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/error"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </android.support.constraint.ConstraintLayout>

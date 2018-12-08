@@ -8,14 +8,16 @@
     <ImageView
         android:id="@+id/photo"
         android:layout_width="0dp"
-        android:layout_height="263dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photo_name"
         app:srcCompat="@android:drawable/checkbox_off_background" />
 
     <TextView
@@ -26,7 +28,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Photo name"
+        android:text="@string/photo_display_tile"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/photo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,29 +39,30 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Tag"
+        android:layout_marginBottom="64dp"
+        android:text="@string/tag"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="402dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back to Album"
+        android:text="@string/back"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button"
         app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        tools:layout_editor_absoluteY="402dp" />
+        app:layout_constraintStart_toEndOf="@+id/button" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Move"
+        android:text="@string/move"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button2"
-        tools:layout_editor_absoluteY="402dp" />
+        app:layout_constraintStart_toEndOf="@+id/button2" />
 </android.support.constraint.ConstraintLayout>
