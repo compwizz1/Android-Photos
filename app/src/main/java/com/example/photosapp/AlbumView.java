@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
+import java.util.List;
+
 public class AlbumView extends AppCompatActivity {
 
     User user;
     Album album;
+    List<Photo> photos;
 
     Button add, remove, slideshow, display, move;
 
@@ -23,6 +26,9 @@ public class AlbumView extends AppCompatActivity {
 
         user = (User) getIntent().getSerializableExtra("extra_user");
         album = (Album) getIntent().getSerializableExtra("extra_album");
+        photos = album.getPhotos();
+
+
 
 
     }
