@@ -43,17 +43,18 @@ public class RenameAlbum extends AppCompatActivity {
             error.setText("Error, Please enter a name");
             return;
         }
-        else {
-            if (user.hasAlbumName(AlbumName.getText().toString())) {
+        else if (user.hasAlbumName(newName))
+        {
                 error.setText("Error. Album name already Exists");
                 return;
-            } else {
-                album.rename(AlbumName.getText().toString());
-                Intent intent = new Intent();
-                intent.putExtra("extra_user", user);
-                setResult(RESULT_OK, intent);
-                finish();
-            }
+        }
+        else
+        {
+            user.getAlbum(album).rename(newName);
+            Intent intent = new Intent();
+            intent.putExtra("extra_user", user);
+            setResult(RESULT_OK, intent);
+            finish();
         }
 
     }

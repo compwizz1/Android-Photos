@@ -147,7 +147,16 @@ public class User implements Serializable {
      */
     public void removeAlbum(Album rem)
     {
-        albumList.remove(rem);
+        int index = 0;
+        for(Album x: albumList)
+        {
+            if (x.getName() == rem.getName())
+            {
+                albumList.remove(index);
+            }
+            index++;
+        }
+
     }
 
     /**

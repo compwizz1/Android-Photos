@@ -42,8 +42,10 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter<Album>(this, R.layout.album_text, albumList);
         listview.setAdapter(adapter);
         // show album for possible edit when tapped
-        listview.setSelection(0);
-        //listview.setOnItemClickListener((p, V, pos, id) -> showAlbum(pos));
+        if(!albumList.isEmpty()) {
+            listview.setSelection(0);
+        }
+        listview.setOnItemClickListener((p, V, pos, id) -> SelectAlbum(pos));
     }
 
     public void SelectAlbum(int position)
@@ -76,6 +78,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void Remove(View view)
+    {
+        Album selected = albumList.get(index);
+        Intent intent = new Intent(this, RemoveAlbum.class);
+        intent.putExtra("extra_user", user);
+        intent.putExtra("extra_album", selected);
+        startActivityForResult(intent, 1);
+
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent intent)
     {
         if (resultCode != RESULT_OK) {
@@ -86,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
         listview = findViewById(R.id.listview);
         ArrayAdapter adapter = new ArrayAdapter<Album>(this, R.layout.album_text, albumList);
         listview.setAdapter(adapter);
-
+        if(!albumList.isEmpty()) {
+            listview.setSelection(0);
+        }
+        listview.setOnItemClickListener((p, V, pos, id) -> SelectAlbum(pos));
     }
 }
