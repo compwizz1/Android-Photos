@@ -44,6 +44,7 @@ public class User implements Serializable {
      */
     private List<String> tagTypes;
 
+    private static final long serialVersionUID = 1L;
 
     public static void writeUser(User ul) throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(
