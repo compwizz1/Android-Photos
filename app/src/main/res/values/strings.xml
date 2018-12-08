@@ -15,4 +15,9 @@
     <string name="photos_title" translatable="false">Photos in this album + commands</string>
     <string name="move" translatable="false">Move</string>
     <string name="exit_slideshow" translatable="false">Exit Slideshow</string>
+    <string-array name="tag_types">
+        <item>Select a tag type...</item>
+        <item>Location</item>
+        <item>Person</item>
+    </string-array>
 </resources>
