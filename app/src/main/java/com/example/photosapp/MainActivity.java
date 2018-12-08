@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         create = findViewById(R.id.create);
         open = findViewById(R.id.previous);
         rename = findViewById(R.id.next);
-        remove = findViewById(R.id.back);
+        remove = findViewById(R.id.remove);
         search = findViewById(R.id.search);
 
         info = findViewById(R.id.info);

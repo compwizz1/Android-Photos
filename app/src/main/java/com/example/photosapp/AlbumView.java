@@ -20,7 +20,7 @@ public class AlbumView extends AppCompatActivity {
         setContentView(R.layout.create_album);
 
         add = findViewById(R.id.add);
-        remove = findViewById(R.id.back);
+        remove = findViewById(R.id.remove);
         move = findViewById(R.id.display);
         display = findViewById(R.id.display);
 

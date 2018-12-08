@@ -20,14 +20,16 @@
 
     <Switch
         android:id="@+id/tagType"
-        android:layout_width="114dp"
+        android:layout_width="126dp"
         android:layout_height="49dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="362dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="364dp"
         android:checked="false"
         android:showText="false"
         android:splitTrack="false"
-        android:text="Location Tag"
+        android:text="Tag Type switch"
+        android:textOff="LocationTag"
+        android:textOn="Person Tag"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
