@@ -37,6 +37,7 @@ public class PhotoDisplay extends AppCompatActivity {
         user = (User) getIntent().getSerializableExtra("extra_user");
         photo = (Photo) getIntent().getSerializableExtra("extra_photo");
         album = (Album) getIntent().getSerializableExtra("extra_album");
+        photoIndex = (Integer) getIntent().getIntExtra("extra_index", 0);
 
         imageView.setImageBitmap(photo.getPic());
 

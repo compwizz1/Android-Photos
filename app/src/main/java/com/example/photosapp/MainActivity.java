@@ -122,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        info.setText("Error. No album to open");
         albumList = user.getAlbumList();
         listview = findViewById(R.id.listview);
         ArrayAdapter adapter = new ArrayAdapter<Album>(this, R.layout.album_text, albumList);

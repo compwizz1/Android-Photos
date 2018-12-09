@@ -240,7 +240,7 @@ public class Photo implements Serializable
      */
     public String toString()
     {
-        return localdate.toString() + "| Caption: " + this.caption;
+        return "photo";
     }
 
     /**
