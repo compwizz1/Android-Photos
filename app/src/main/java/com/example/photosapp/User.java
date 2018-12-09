@@ -24,7 +24,7 @@ public class User implements Serializable {
     /**
      * The username used to log in by the user
      */
-    private String username;
+    private String username = "TestUser";
 
     /**
      * The list of albums for the user
@@ -105,7 +105,7 @@ public class User implements Serializable {
      */
     public String toString()
     {
-        return username;
+        return albumList.get(0).toString();
     }
 
     /**

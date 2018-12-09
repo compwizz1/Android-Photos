@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     public void SelectAlbum(int position)
     {
         index = position;
-
+        System.out.println(user);
     }
 
     public void Create(View view)
@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         Album selected = albumList.get(index);
         Intent intent = new Intent(this, AlbumView.class);
         intent.putExtra("extra_user", user);
+        System.out.println(user);
         intent.putExtra("extra_album", selected);
         startActivity(intent);
     }

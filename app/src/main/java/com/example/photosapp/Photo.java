@@ -68,7 +68,8 @@ public class Photo implements Serializable
      */
     private LocalDate localdate;
 
-    private Bitmap pic;
+
+    private ProxyBitmap proxyPic;
 
 
     /**
@@ -85,13 +86,15 @@ public class Photo implements Serializable
         //localdate = LocalDate.parse(modifiedReadable, formatter);
         this.caption = "";
         this.tags = new ArrayList<Tag>();
-        pic = bitmap;
+
+        proxyPic = new ProxyBitmap(bitmap);
 
     }
 
+
     public Bitmap getPic()
     {
-        return pic;
+        return proxyPic.getBitmap();
     }
 
     /**

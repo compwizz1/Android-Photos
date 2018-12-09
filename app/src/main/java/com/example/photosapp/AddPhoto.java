@@ -30,12 +30,14 @@ public class AddPhoto extends AppCompatActivity {
         cancel = findViewById(R.id.cancel);
 
         user = (User) getIntent().getSerializableExtra("extra_user");
+        System.out.println(user);
         album = (Album) getIntent().getSerializableExtra("extra_album");
     }
 
     public void Add(View view){
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
+        System.out.println(user +"testing");
         startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
     }
     public void Cancel(View view){
@@ -61,7 +63,10 @@ public class AddPhoto extends AppCompatActivity {
                     break;
             }
         }
+        System.out.println(user);
+
         Intent intent = new Intent();
+
         intent.putExtra("user", user);
         intent.putExtra("album", user.getAlbumFromName(album.getName()));
         setResult(RESULT_OK, intent);
