@@ -84,6 +84,9 @@ public class AlbumView extends AppCompatActivity {
     {
 
     }
+    public void SlideShow(View view){
+
+    }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent intent)
     {

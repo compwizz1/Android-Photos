@@ -37,7 +37,7 @@ public class AddPhoto extends AppCompatActivity {
         startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
     }
     public void Cancel(View view){
-        setResult(RESULT_OK);
+        setResult(RESULT_CANCELED);
         Intent intent = new Intent();
         intent.putExtra("user", user);
         intent.putExtra("album", album);
