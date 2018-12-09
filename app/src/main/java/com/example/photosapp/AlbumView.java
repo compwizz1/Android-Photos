@@ -51,7 +51,7 @@ public class AlbumView extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("extra_user", user);
         startActivity(intent);
-    }
+    } 
 
     public void SelectPhoto(int position)
     {
