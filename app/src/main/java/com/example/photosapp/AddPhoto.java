@@ -62,8 +62,8 @@ public class AddPhoto extends AppCompatActivity {
             }
         }
         Intent intent = new Intent();
-        intent.putExtra("user", user);
-        intent.putExtra("album", user.getAlbumFromName(album.getName()));
+        intent.putExtra("extra_user", user);
+        intent.putExtra("extra_album", user.getAlbumFromName(album.getName()));
         setResult(RESULT_OK, intent);
         finish();
 
