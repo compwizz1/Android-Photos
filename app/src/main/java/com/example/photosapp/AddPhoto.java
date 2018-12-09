@@ -36,6 +36,11 @@ public class AddPhoto extends AppCompatActivity {
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
     }
+    public void Cancel(View view){
+        setResult(RESULT_CANCELED);
+        finish();
+
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

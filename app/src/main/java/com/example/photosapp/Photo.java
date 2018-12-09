@@ -73,7 +73,7 @@ public class Photo implements Serializable
 
     /**
      * The constructor used to initialize a new photo. This sets the date of the photo and gets the file location.
-     * @param pathName The path file for the photo
+     *
      */
     public Photo(Bitmap bitmap)
     {
