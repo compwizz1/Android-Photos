@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 		try {
-		    user = User.readUser();
+		    user = User.readUser(this);
+            albumList = user.getAlbumList();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -39,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         search = findViewById(R.id.search);
 
         info = findViewById(R.id.info);
-        listview = findViewById(R.id.listview);
 
+        listview = findViewById(R.id.listview);
         ArrayAdapter adapter = new ArrayAdapter<Album>(this, R.layout.album_text, albumList);
         listview.setAdapter(adapter);
 
@@ -117,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
         user = (User) intent.getSerializableExtra("extra_user");
         try {
-            User.writeUser(user);
+            User.writeUser(user, this);
         } catch (IOException e) {
             e.printStackTrace();
         }

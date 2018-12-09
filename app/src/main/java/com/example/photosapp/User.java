@@ -1,4 +1,6 @@
 package com.example.photosapp;
+import android.content.Context;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -37,7 +39,7 @@ public class User implements Serializable {
     /**
      * The file directory location for serialization
      */
-    private static final String storeFile = "users.dat";
+    private static final String storeFile = "user.dat";
 
     /**
      * The users list of possible tag types
@@ -46,18 +48,20 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public static void writeUser(User ul) throws IOException {
-        ObjectOutputStream oos = new ObjectOutputStream(
-                new FileOutputStream(storeDir + File.separator + storeFile));
-        oos.writeObject(ul);
-        oos.close();
+    public static void writeUser(User u, Context context) throws IOException {
+        FileOutputStream fos = context.openFileOutput(storeFile, Context.MODE_PRIVATE);
+        ObjectOutputStream os = new ObjectOutputStream(fos);
+        os.writeObject(u);
+        os.close();
+        fos.close();
     }
-    public static User readUser() throws IOException, ClassNotFoundException {
-        ObjectInputStream ois = new ObjectInputStream(
-                new FileInputStream(storeDir + File.separator + storeFile));
-        User ul = (User)ois.readObject();
-        ois.close();
-        return ul;
+    public static User readUser(Context context) throws IOException, ClassNotFoundException {
+        FileInputStream fis = context.openFileInput(storeFile);
+        ObjectInputStream is = new ObjectInputStream(fis);
+        User u = (User) is.readObject();
+        is.close();
+        fis.close();
+        return u;
     }
     /**
      * The constructor used to initialize the user data
