@@ -13,6 +13,8 @@ import android.widget.Button;
 
 import java.io.IOException;
 
+import static android.telephony.MbmsDownloadSession.RESULT_CANCELLED;
+
 public class AddPhoto extends AppCompatActivity {
 
     Button add, cancel;
@@ -37,10 +39,7 @@ public class AddPhoto extends AppCompatActivity {
         startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
     }
     public void Cancel(View view){
-        setResult(RESULT_CANCELED);
-        Intent intent = new Intent();
-        intent.putExtra("user", user);
-        intent.putExtra("album", album);
+        setResult(RESULT_CANCELLED);
         finish();
 
     }
@@ -48,8 +47,8 @@ public class AddPhoto extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == Activity.RESULT_OK)
-            switch (requestCode){
+        if(resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
                 case GALLERY_REQUEST:
                     Uri selectedImage = data.getData();
                     try {
@@ -61,6 +60,13 @@ public class AddPhoto extends AppCompatActivity {
                     }
                     break;
             }
+        }
+        Intent intent = new Intent();
+        intent.putExtra("user", user);
+        intent.putExtra("album", user.getAlbumFromName(album.getName()));
+        setResult(RESULT_OK, intent);
+        finish();
+
     }
 
 }
