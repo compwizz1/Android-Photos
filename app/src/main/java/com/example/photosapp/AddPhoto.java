@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 import java.io.IOException;
+import java.io.OutputStream;
 
 import static android.telephony.MbmsDownloadSession.RESULT_CANCELLED;
 
@@ -37,7 +38,10 @@ public class AddPhoto extends AppCompatActivity {
     public void Add(View view){
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
-        System.out.println(user +"testing");
+        if(user == null)
+            System.out.println("yes");
+        else
+            System.out.println("no");
         startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
     }
     public void Cancel(View view){
@@ -53,9 +57,10 @@ public class AddPhoto extends AppCompatActivity {
             switch (requestCode) {
                 case GALLERY_REQUEST:
                     Uri selectedImage = data.getData();
+                    String uri = selectedImage.toString();
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
-                        user.getAlbumFromName(album.getName()).addPhoto(new Photo(bitmap));
+                        user.getAlbumFromName(album.getName()).addPhoto(new Photo(uri));
                         //carImage.setImageBitmap(bitmap);
                     } catch (IOException e) {
                         Log.i("TAG", "Some exception " + e);
@@ -66,9 +71,17 @@ public class AddPhoto extends AppCompatActivity {
         System.out.println(user);
 
         Intent intent = new Intent();
-
-        intent.putExtra("user", user);
-        intent.putExtra("album", user.getAlbumFromName(album.getName()));
+        if(user == null){
+            System.out.println("ya don goofed");
+        }
+        if(album == null){
+            System.out.println("ya really dun goofed");
+        }
+        else{
+            System.out.println("ok");
+        }
+        intent.putExtra("extra_user", user);
+        intent.putExtra("extra_album", user.getAlbumFromName(album.getName()));
         setResult(RESULT_OK, intent);
         finish();
 

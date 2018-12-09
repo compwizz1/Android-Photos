@@ -96,21 +96,25 @@ public class AlbumView extends AppCompatActivity {
 
         user = (User) intent.getSerializableExtra("extra_user");
         album = (Album) intent.getSerializableExtra("extra_album");
-        album = user.getAlbumFromName(album.getName());
-        try {
-            User.writeUser(user, this);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(album == null){
+            System.out.println("F");
         }
+//        album = user.getAlbumFromName(album.getName());
+//        try {
+//            User.writeUser(user, this);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        photos = album.getPhotos();
 
         listview = findViewById(R.id.listview);
-        ArrayAdapter adapter = new ArrayAdapter<Photo>(this, R.layout.photo_show, photos);
-        listview.setAdapter(adapter);
+//        ArrayAdapter adapter = new ArrayAdapter<Photo>(this, R.layout.photo_show, photos);
+//        listview.setAdapter(adapter);
 
-        if(!photos.isEmpty()) {
-            listview.setSelection(0);
-        }
-        listview.setOnItemClickListener((p, V, pos, id) -> SelectPhoto(pos));
+//        if(!photos.isEmpty()) {
+//            listview.setSelection(0);
+//        }
+//        listview.setOnItemClickListener((p, V, pos, id) -> SelectPhoto(pos));
     }
 
 }

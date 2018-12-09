@@ -1,10 +1,13 @@
 package com.example.photosapp;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
+import android.net.Uri;
 
 //import javax.activation.MimetypesFileTypeMap;
 import java.io.*;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -69,16 +72,16 @@ public class Photo implements Serializable
     private LocalDate localdate;
 
 
-    private ProxyBitmap proxyPic;
+    private transient ProxyBitmap proxyPic;
 
 
     /**
      * The constructor used to initialize a new photo. This sets the date of the photo and gets the file location.
      *
      */
-    public Photo(Bitmap bitmap)
+    public Photo(String pathName)
     {
-        //this.pathName = pathName;
+        this.pathName = pathName;
         //File f = new File(pathName);
         //this.modifiedRaw = f.lastModified();
         //this.modifiedReadable = sdf.format(this.modifiedRaw);
@@ -87,13 +90,21 @@ public class Photo implements Serializable
         this.caption = "";
         this.tags = new ArrayList<Tag>();
 
-        proxyPic = new ProxyBitmap(bitmap);
+
 
     }
 
 
     public Bitmap getPic()
     {
+        try {
+            URL u = new URL(pathName);
+            Bitmap b = BitmapFactory.decodeStream(u.openConnection().getInputStream());
+            proxyPic = new ProxyBitmap(b);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
         return proxyPic.getBitmap();
     }
 
