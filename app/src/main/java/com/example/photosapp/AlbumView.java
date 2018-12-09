@@ -31,7 +31,7 @@ public class AlbumView extends AppCompatActivity {
         remove = findViewById(R.id.remove);
         move = findViewById(R.id.move);
         display = findViewById(R.id.display);
-        listview = findViewById(R.id.listview);
+        listview = findViewById(R.id.photoList);
 
         user = (User) getIntent().getSerializableExtra("extra_user");
         album = (Album) getIntent().getSerializableExtra("extra_album");
@@ -46,6 +46,11 @@ public class AlbumView extends AppCompatActivity {
         listview.setOnItemClickListener((p, V, pos, id) -> SelectPhoto(pos));
 
 
+    }
+    public void Back(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("extra_user", user);
+        startActivity(intent);
     }
 
     public void SelectPhoto(int position)
