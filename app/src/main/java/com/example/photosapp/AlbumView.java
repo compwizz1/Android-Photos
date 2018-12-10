@@ -32,13 +32,13 @@ public class AlbumView extends AppCompatActivity {
         remove = findViewById(R.id.remove);
         move = findViewById(R.id.move);
         display = findViewById(R.id.display);
-        listview = findViewById(R.id.photoList);
+        listview = findViewById(R.id.listview);
 
         user = (User) getIntent().getSerializableExtra("extra_user");
         album = (Album) getIntent().getSerializableExtra("extra_album");
         photos = album.getPhotos();
 
-        ArrayAdapter adapter = new ArrayAdapter<Photo>(this, R.layout.photo_show, photos);
+        CustomAdapter adapter = new CustomAdapter(this, R.layout.photo_pic, photos);
         listview.setAdapter(adapter);
 
         if(!photos.isEmpty()) {
@@ -72,12 +72,12 @@ public class AlbumView extends AppCompatActivity {
 
     public void Display(View view)
     {
-        Intent intent = new Intent(this, AddPhoto.class);
+        Intent intent = new Intent(this, PhotoDisplay.class);
         intent.putExtra("extra_user", user);
         intent.putExtra("extra_album",album);
         intent.putExtra("extra_photo", photos.get(index));
         intent.putExtra("extra_index", index);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
 
     }
     public void Move(View view)
@@ -99,22 +99,24 @@ public class AlbumView extends AppCompatActivity {
         if(album == null){
             System.out.println("F");
         }
-//        album = user.getAlbumFromName(album.getName());
-//        try {
-//            User.writeUser(user, this);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        album = user.getAlbumFromName(album.getName());
+       try {
+            User.writeUser(user, this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         photos = album.getPhotos();
+        System.out.println(photos.size());
 
-        listview = findViewById(R.id.listview);
-//        ArrayAdapter adapter = new ArrayAdapter<Photo>(this, R.layout.photo_show, photos);
-//        listview.setAdapter(adapter);
+        listview = (ListView) findViewById(R.id.listview);
+        ArrayAdapter adapter = new ArrayAdapter<Photo>(this, R.layout.photo_show, photos);
+        listview.setAdapter(adapter);
 
-//        if(!photos.isEmpty()) {
-//            listview.setSelection(0);
-//        }
+        if(!photos.isEmpty()) {
+            listview.setSelection(0);
+        }
 //        listview.setOnItemClickListener((p, V, pos, id) -> SelectPhoto(pos));
     }
 
 }
+

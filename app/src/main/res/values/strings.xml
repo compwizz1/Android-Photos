@@ -9,11 +9,11 @@
     <string name="search" translatable="false">Search Photos</string>
     <string name="rename_instructions" translatable="false">Please enter the new name for the album</string>
     <string name="add" translatable="false">Add</string>
-    <string name="tag" translatable="false">Add Tag</string>
+    <string name="tag" translatable="false">Tags</string>
     <string name="remove" translatable="false">Remove</string>
     <string name="display" translatable="false">Display</string>
     <string name="photos_title" translatable="false">Photos in this album + commands</string>
-    <string name="move">Move</string>
+    <string name="move">Move/Copy</string>
     <string name="exit_slideshow" translatable="false">Exit Slideshow</string>
     <string name="tag_hint">New Tag Value</string>
     <string name="remove_tag">Remove selected tag</string>

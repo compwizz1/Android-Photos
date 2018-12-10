@@ -1,6 +1,9 @@
 package com.example.photosapp;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -33,13 +36,20 @@ public class PhotoDisplay extends AppCompatActivity {
         back = findViewById(R.id.back);
         previous = findViewById(R.id.previous);
         imageView = findViewById(R.id.imageView);
+        error = findViewById(R.id.error);
 
         user = (User) getIntent().getSerializableExtra("extra_user");
         photo = (Photo) getIntent().getSerializableExtra("extra_photo");
         album = (Album) getIntent().getSerializableExtra("extra_album");
         photoIndex = (Integer) getIntent().getIntExtra("extra_index", 0);
-
-        imageView.setImageBitmap(photo.getPic());
+        try {
+            Bitmap b = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photo.getPic());
+            imageView.setImageBitmap(b);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
 
     }
 
@@ -52,7 +62,14 @@ public class PhotoDisplay extends AppCompatActivity {
         else {
             photoIndex++;
             photo = album.getPhotos().get(photoIndex);
-            imageView.setImageBitmap(photo.getPic());
+            try {
+                Bitmap b = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photo.getPic());
+                imageView.setImageBitmap(b);
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -65,13 +82,23 @@ public class PhotoDisplay extends AppCompatActivity {
         else {
             photoIndex--;
             photo = album.getPhotos().get(photoIndex);
-            imageView.setImageBitmap(photo.getPic());
+            try {
+                Bitmap b = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photo.getPic());
+                imageView.setImageBitmap(b);
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 
     public void Back(View view)
     {
-        setResult(RESULT_OK);
+        Intent intent = new Intent();
+        intent.putExtra("extra_user", user);
+        intent.putExtra("extra_album", album);
+        setResult(RESULT_OK, intent);
         finish();
     }
 

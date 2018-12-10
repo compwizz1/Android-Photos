@@ -36,7 +36,7 @@ public class AddPhoto extends AppCompatActivity {
     }
 
     public void Add(View view){
-        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+        Intent photoPickerIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         photoPickerIntent.setType("image/*");
         if(user == null)
             System.out.println("yes");
@@ -58,10 +58,11 @@ public class AddPhoto extends AppCompatActivity {
                 case GALLERY_REQUEST:
                     Uri selectedImage = data.getData();
                     String uri = selectedImage.toString();
+                    System.out.println(uri);
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
                         user.getAlbumFromName(album.getName()).addPhoto(new Photo(uri));
-                        //carImage.setImageBitmap(bitmap);
+
                     } catch (IOException e) {
                         Log.i("TAG", "Some exception " + e);
                     }

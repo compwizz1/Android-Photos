@@ -4,9 +4,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.net.Uri;
+import android.provider.MediaStore;
 
 //import javax.activation.MimetypesFileTypeMap;
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.*;
@@ -95,18 +98,36 @@ public class Photo implements Serializable
     }
 
 
-    public Bitmap getPic()
+    public Uri getPic()
     {
+        /*
         try {
-            URL u = new URL(pathName);
-            Bitmap b = BitmapFactory.decodeStream(u.openConnection().getInputStream());
-            proxyPic = new ProxyBitmap(b);
+
+            URL url = new URL(pathName);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+
+            Bitmap b = BitmapFactory.decodeStream(input);
+            System.out.println("bitmap object");
+            System.out.println(b.toString());
+
+            //Bitmap b = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);;
+            //proxyPic = new ProxyBitmap(b);
         }
         catch(Exception e){
             e.printStackTrace();
         }
-        return proxyPic.getBitmap();
+        if(proxyPic==null)
+        {
+            System.out.println("no proxy pic inserted");
+        }
+        return proxyPic.getBitmap();*/
+
+        return Uri.parse(pathName);
     }
+
 
     /**
      * Get Photo's Image

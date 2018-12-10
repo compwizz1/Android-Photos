@@ -65,12 +65,13 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ListView
-        android:id="@+id/photoList"
+        android:id="@+id/listview"
         android:layout_width="0dp"
         android:layout_height="195dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="13dp"
         android:layout_marginTop="22dp"
         android:layout_marginEnd="16dp"
+        android:listSelector="#00f"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
