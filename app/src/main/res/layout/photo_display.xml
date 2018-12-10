@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="364dp"
+        android:layout_marginTop="344dp"
         android:onClick="Previous"
         android:text="Previous"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,10 +26,9 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.303"
+        app:layout_constraintVertical_bias="0.24"
         app:srcCompat="@android:drawable/checkbox_off_background" />
 
     <TextView
@@ -53,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="60dp"
         android:text="@string/tag"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,16 +64,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="188dp"
+        android:layout_marginEnd="8dp"
         android:onClick="Back"
         android:text="@string/back"
         app:layout_constraintBaseline_toBaselineOf="@+id/tags"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tags" />
 
     <Button
         android:id="@+id/next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="364dp"
+        android:layout_marginTop="344dp"
         android:layout_marginEnd="4dp"
         android:onClick="Next"
         android:text="Next"
@@ -84,10 +85,22 @@
     <TextView
         android:id="@+id/error"
         android:layout_width="146dp"
-        android:layout_height="64dp"
+        android:layout_height="47dp"
         android:layout_marginStart="128dp"
-        android:layout_marginTop="364dp"
+        android:layout_marginTop="344dp"
         android:textAlignment="textStart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/taglist"
+        android:layout_width="147dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.98" />
 </android.support.constraint.ConstraintLayout>

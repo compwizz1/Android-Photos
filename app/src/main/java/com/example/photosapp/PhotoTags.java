@@ -102,6 +102,7 @@ public class PhotoTags extends AppCompatActivity {
         }
         tagList = photo.getTags();
         adapter.notifyDataSetChanged(); //used to update tag list
+        return;
     }
 
     public void Remove(View view)
@@ -118,6 +119,8 @@ public class PhotoTags extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        tagList = photo.getTags();
+        adapter.notifyDataSetChanged();
         return;
 
 
@@ -128,6 +131,7 @@ public class PhotoTags extends AppCompatActivity {
         Intent intent = new Intent();
         intent.putExtra("extra_user", user);
         intent.putExtra("extra_album", album);
+        intent.putExtra("extra_index", photoIndex);
         setResult(RESULT_OK, intent);
         finish();
 

@@ -27,6 +27,8 @@ public class PhotoDisplay extends AppCompatActivity {
 
     TextView error;
 
+    TextView taglist;
+
     ImageView imageView;
 
     @Override
@@ -40,11 +42,13 @@ public class PhotoDisplay extends AppCompatActivity {
         tags = findViewById(R.id.tags);
         imageView = findViewById(R.id.imageView);
         error = findViewById(R.id.error);
+        taglist = findViewById(R.id.taglist);
 
         user = (User) getIntent().getSerializableExtra("extra_user");
         photo = (Photo) getIntent().getSerializableExtra("extra_photo");
         album = (Album) getIntent().getSerializableExtra("extra_album");
         photoIndex = (Integer) getIntent().getIntExtra("extra_index", 0);
+        taglist.setText(photo.printTags());
         try {
             Bitmap b = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photo.getPic());
             imageView.setImageBitmap(b);
@@ -65,6 +69,7 @@ public class PhotoDisplay extends AppCompatActivity {
         else {
             photoIndex++;
             photo = album.getPhotos().get(photoIndex);
+            taglist.setText(photo.printTags());
             try {
                 Bitmap b = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photo.getPic());
                 imageView.setImageBitmap(b);
@@ -85,6 +90,7 @@ public class PhotoDisplay extends AppCompatActivity {
         else {
             photoIndex--;
             photo = album.getPhotos().get(photoIndex);
+            taglist.setText(photo.printTags());
             try {
                 Bitmap b = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photo.getPic());
                 imageView.setImageBitmap(b);
