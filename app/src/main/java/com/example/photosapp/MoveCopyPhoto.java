@@ -8,9 +8,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.io.IOException;
 import java.util.List;
 
 public class MoveCopyPhoto extends AppCompatActivity {
@@ -23,11 +25,11 @@ public class MoveCopyPhoto extends AppCompatActivity {
 
     int photoIndex;
 
-    TextView error;
+    TextView error, actionMessage;
 
     Button confirm, cancel;
 
-    ToggleButton toggle;
+    Switch switchAction;
 
     ListView listview;
 
@@ -42,9 +44,10 @@ public class MoveCopyPhoto extends AppCompatActivity {
 
         confirm = findViewById(R.id.confirm);
         cancel = findViewById(R.id.cancel);
-        toggle = findViewById(R.id.toggle);
+        switchAction = findViewById(R.id.switchAction);
         listview = findViewById(R.id.listview);
         error = findViewById(R.id.error);
+        actionMessage = findViewById(R.id.actionMessage);
 
         user = (User) getIntent().getSerializableExtra("extra_user");
         photo = (Photo) getIntent().getSerializableExtra("extra_photo");
@@ -63,11 +66,21 @@ public class MoveCopyPhoto extends AppCompatActivity {
             listview.setSelection(0);
             albumIndex = 0;
         }
+        adapter.notifyDataSetChanged();;
         listview.setOnItemClickListener((p, V, pos, id) -> SelectAlbum(pos));
-        toggle.setChecked(false);
-        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        switchAction.setChecked(false);
+        actionMessage.setText("Copy Photo to Album");
+        switchAction.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 action = isChecked;
+                if(action)
+                {
+                    actionMessage.setText("Move Photo to Album");
+                }
+                else if(!action)
+                {
+                    actionMessage.setText("Copy Photo to Album");
+                }
             }
         });
 
@@ -78,17 +91,22 @@ public class MoveCopyPhoto extends AppCompatActivity {
          albumIndex = position;
      }
 
-     public void confirm(View view)
+     public void Confirm(View view)
      {
          Album chosen = user.getAlbumList().get(albumIndex);
          if(action)
          {
              chosen.addPhoto(photo);
-             album.getPhotos().remove(photoIndex);
+             album.removePhoto(album.getPhotos().get(photoIndex));
          }
          else if(!action)
          {
              chosen.addPhoto(photo);
+         }
+         try {
+             User.writeUser(user, this);
+         } catch (IOException e) {
+             e.printStackTrace();
          }
          Cancel(view);
      }

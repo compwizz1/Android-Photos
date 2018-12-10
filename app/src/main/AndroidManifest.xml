@@ -22,9 +22,10 @@
         <activity android:name=".RemoveAlbum"></activity>
         <activity android:name=".RenameAlbum"></activity>
         <activity android:name=".AlbumView"></activity>
-        <activity android:name=".PhotoView"></activity>
         <activity android:name=".AddPhoto"></activity>
         <activity android:name=".PhotoDisplay"></activity>
+        <activity android:name=".PhotoTags"></activity>
+        <activity android:name=".MoveCopyPhoto"></activity>
     </application>
 
 </manifest>

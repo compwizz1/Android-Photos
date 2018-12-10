@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,9 +20,13 @@ public class AlbumView extends AppCompatActivity {
 
     ListView listview;
 
-    Button add, remove, slideshow, display, move;
+    Button add, remove, display, move, back;
+
+    TextView error;
 
     int index;
+
+    CustomAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +38,15 @@ public class AlbumView extends AppCompatActivity {
         move = findViewById(R.id.move);
         display = findViewById(R.id.display);
         listview = findViewById(R.id.listview);
+        error = findViewById(R.id.error);
+        back = findViewById(R.id.back);
 
         user = (User) getIntent().getSerializableExtra("extra_user");
         album = (Album) getIntent().getSerializableExtra("extra_album");
+        album = user.getAlbumFromName(album.getName());
         photos = album.getPhotos();
 
-        CustomAdapter adapter = new CustomAdapter(this, R.layout.photo_pic, photos);
+        adapter = new CustomAdapter(this, R.layout.photo_pic, photos);
         listview.setAdapter(adapter);
 
         if(!photos.isEmpty()) {
@@ -67,11 +75,31 @@ public class AlbumView extends AppCompatActivity {
 
     public void Remove(View view)
     {
+        if(photos.isEmpty())
+        {
+            error.setText("Error: No photos to remove");
+            return;
+        }
+        album.removePhoto(photos.get(index));
+        try {
+            User.writeUser(user, this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        photos = album.getPhotos();
+        adapter.notifyDataSetChanged();
+
 
     }
 
     public void Display(View view)
     {
+        if(photos.isEmpty())
+        {
+            error.setText("Error: No photos to display");
+            return;
+        }
+
         Intent intent = new Intent(this, PhotoDisplay.class);
         intent.putExtra("extra_user", user);
         intent.putExtra("extra_album",album);
@@ -82,16 +110,18 @@ public class AlbumView extends AppCompatActivity {
     }
     public void Move(View view)
     {
+        if(photos.isEmpty())
+        {
+            error.setText("Error: No photos to move/copy");
+            return;
+        }
+
         Intent intent = new Intent(this, MoveCopyPhoto.class);
         intent.putExtra("extra_user", user);
         intent.putExtra("extra_album",album);
         intent.putExtra("extra_photo", photos.get(index));
         intent.putExtra("extra_index", index);
         startActivityForResult(intent, 1);
-
-    }
-
-    public void SlideShow(View view){
 
     }
 

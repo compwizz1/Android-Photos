@@ -136,6 +136,8 @@ public class PhotoDisplay extends AppCompatActivity {
         album = user.getAlbumFromName(album.getName());
         photoIndex = intent.getIntExtra("extra_index", 0);
         photo = album.getPhotos().get(photoIndex);
+        taglist.setText(photo.printTags());
+
         try {
             User.writeUser(user, this);
         } catch (IOException e) {

@@ -12,7 +12,7 @@
     <string name="tag" translatable="false">Tags</string>
     <string name="remove" translatable="false">Remove</string>
     <string name="display" translatable="false">Display</string>
-    <string name="photos_title" translatable="false">Photos in this album + commands</string>
+    <string name="photos_title" translatable="false">Photos</string>
     <string name="move">Move/Copy</string>
     <string name="exit_slideshow" translatable="false">Exit Slideshow</string>
     <string name="tag_hint">New Tag Value</string>

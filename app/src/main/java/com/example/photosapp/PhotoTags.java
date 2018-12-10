@@ -41,7 +41,7 @@ public class PhotoTags extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.photo_display);
+        setContentView(R.layout.photo_tags);
 
         addTag = findViewById(R.id.addTag);
         back = findViewById(R.id.back);
