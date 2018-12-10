@@ -24,7 +24,7 @@ public class RemoveAlbum extends AppCompatActivity {
         setContentView(R.layout.remove_album);
 
         confirm = findViewById(R.id.confirm);
-        cancel = findViewById(R.id.cancel);
+        cancel = findViewById(R.id.back);
         error = findViewById(R.id.error);
         current = findViewById(R.id.current);
         user = (User) getIntent().getSerializableExtra("extra_user");

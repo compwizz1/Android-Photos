@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 
 import java.io.IOException;
-import java.io.OutputStream;
 
 import static android.telephony.MbmsDownloadSession.RESULT_CANCELLED;
 
@@ -28,7 +27,7 @@ public class AddPhoto extends AppCompatActivity {
         setContentView(R.layout.add_photo);
 
         add = findViewById(R.id.add);
-        cancel = findViewById(R.id.cancel);
+        cancel = findViewById(R.id.back);
 
         user = (User) getIntent().getSerializableExtra("extra_user");
         System.out.println(user);

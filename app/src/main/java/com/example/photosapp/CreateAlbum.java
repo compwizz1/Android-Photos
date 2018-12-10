@@ -28,7 +28,7 @@ public class CreateAlbum extends AppCompatActivity {
         setContentView(R.layout.create_album);
 
         confirm = findViewById(R.id.create);
-        cancel = findViewById(R.id.cancel);
+        cancel = findViewById(R.id.back);
         error = findViewById(R.id.error);
         AlbumName = findViewById(R.id.AlbumName);
         user = (User) getIntent().getSerializableExtra("extra_user");

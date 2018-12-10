@@ -84,6 +84,7 @@ public class AlbumView extends AppCompatActivity {
     {
 
     }
+
     public void SlideShow(View view){
 
     }
@@ -109,7 +110,7 @@ public class AlbumView extends AppCompatActivity {
         System.out.println(photos.size());
 
         listview = (ListView) findViewById(R.id.listview);
-        ArrayAdapter adapter = new ArrayAdapter<Photo>(this, R.layout.photo_show, photos);
+        CustomAdapter adapter = new CustomAdapter(this, R.layout.photo_pic, photos);
         listview.setAdapter(adapter);
 
         if(!photos.isEmpty()) {

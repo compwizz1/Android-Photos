@@ -26,7 +26,7 @@ public class RenameAlbum extends AppCompatActivity {
         setContentView(R.layout.rename_album);
 
         confirm = findViewById(R.id.confirm);
-        cancel = findViewById(R.id.cancel);
+        cancel = findViewById(R.id.back);
         error = findViewById(R.id.error);
         AlbumName = findViewById(R.id.AlbumName);
         user = (User) getIntent().getSerializableExtra("extra_user");
