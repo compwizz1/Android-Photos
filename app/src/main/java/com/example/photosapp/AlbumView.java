@@ -82,6 +82,12 @@ public class AlbumView extends AppCompatActivity {
     }
     public void Move(View view)
     {
+        Intent intent = new Intent(this, MoveCopyPhoto.class);
+        intent.putExtra("extra_user", user);
+        intent.putExtra("extra_album",album);
+        intent.putExtra("extra_photo", photos.get(index));
+        intent.putExtra("extra_index", index);
+        startActivityForResult(intent, 1);
 
     }
 
