@@ -111,6 +111,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void Search(View view)
+    {
+        if (albumList.isEmpty())
+        {
+            info.setText("Error. No albums to search from");
+            return;
+        }
+        Intent intent = new Intent(this, SearchPhotos.class);
+        intent.putExtra("extra_user", user);
+        startActivityForResult(intent, 1);
+
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent intent)
     {
         if (resultCode != RESULT_OK) {
