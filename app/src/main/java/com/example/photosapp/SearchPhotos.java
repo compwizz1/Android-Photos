@@ -1,5 +1,6 @@
 package com.example.photosapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,6 +11,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchPhotos extends AppCompatActivity {
 
@@ -61,6 +66,31 @@ public class SearchPhotos extends AppCompatActivity {
 
     public void Search(View view)
     {
+        List<Photo> searchPics;
+        if(val1.getText().toString().isEmpty())
+        {
+            error.setText("Please enter a value into the first column");
+            return;
+        }
+        else if (val2.getText().toString().isEmpty())
+        {
+            searchPics = singleSearch();
+        }
+        else
+        {
+            searchPics = doubleSearch();
+        }
+        if (searchPics!= null && !searchPics.isEmpty())
+        {
+            Intent intent = new Intent(this, SearchResults.class);
+            intent.putExtra("extra_user", user);
+            intent.putExtra("photos_list", (Serializable) searchPics);
+            startActivityForResult(intent, 1);
+
+        }
+        else {
+            error.setText("No matches found. Enter different search criteria");
+        }
 
     }
 
@@ -69,5 +99,70 @@ public class SearchPhotos extends AppCompatActivity {
     {
         setResult(RESULT_CANCELED);
         finish();
+    }
+
+    /**
+     * Search based on one tag
+     *
+     * This method searches for a list of photos through out all the albums based on one tag
+     * @return results The list of photos matching the search criteria
+     */
+    public List<Photo> singleSearch()
+    {
+        Tag search = new Tag(type1.getSelectedItem().toString(), val1.getText().toString());
+        List<Photo> results = new ArrayList<Photo>();
+        for(Album i: user.getAlbumList())
+        {
+            for(Photo j: i.getPhotos())
+            {
+                if(j.containsTag(search))
+                {
+                    results.add(j);
+                }
+            }
+        }
+        return results;
+
+
+    }
+
+    /**
+     * Search based on two Tags
+     *
+     * This method searches for a list of photos from all the album based on a disjunctive or conjunctive search between two tag types and value
+     * @return results The list of photos matching the search criteria
+     */
+    public List<Photo> doubleSearch()
+    {
+        Tag search1 = new Tag(type1.getSelectedItem().toString(), val1.getText().toString());
+        Boolean first = true;
+        Tag search2 = new Tag(type2.getSelectedItem().toString(), val2.getText().toString());
+        Boolean second = true;
+        List<Photo> results = new ArrayList<Photo>();
+        for(Album i: user.getAlbumList())
+        {
+            for(Photo j: i.getPhotos())
+            {
+                first = j.searchTags(search1);
+                second = j.searchTags(search2);
+                if(actionSearch)
+                {
+                    if(first && second)
+                    {
+                        results.add(j);
+                    }
+                }
+                else if(!actionSearch)
+                {
+                    if(first || second)
+                    {
+                        results.add(j);
+                    }
+                }
+
+            }
+        }
+        return results;
+
     }
 }
