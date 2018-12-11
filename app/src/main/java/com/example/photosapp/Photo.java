@@ -264,7 +264,18 @@ public class Photo implements Serializable
             }
         }
         return false;
+    }
 
+    public boolean searchTags(Tag search)
+    {
+        for(Tag x: tags)
+        {
+            if(x.searchMatch(search))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

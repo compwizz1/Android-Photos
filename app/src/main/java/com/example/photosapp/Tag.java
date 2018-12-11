@@ -51,6 +51,24 @@ public class Tag implements Serializable {
         return false;
     }
 
+    public boolean searchMatch(Tag tag)
+    {
+        String type = tag.getTagName();
+        String val = tag.getTagValue();
+        if(type.equals(this.getTagName()))
+        {
+            for(int i = 0; i < val.length(); i++)
+            {
+                if(this.getTagValue().charAt(i) != val.charAt(i))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     /***
      * Get Name
      *
