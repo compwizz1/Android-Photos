@@ -26,6 +26,8 @@
         <activity android:name=".PhotoDisplay"></activity>
         <activity android:name=".PhotoTags"></activity>
         <activity android:name=".MoveCopyPhoto"></activity>
+        <activity android:name=".SearchPhotos"></activity>
+        <activity android:name=".SearchResults"></activity>
     </application>
 
 </manifest>

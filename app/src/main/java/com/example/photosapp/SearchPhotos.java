@@ -8,10 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -82,9 +84,11 @@ public class SearchPhotos extends AppCompatActivity {
         }
         if (searchPics!= null && !searchPics.isEmpty())
         {
+            Album album = new Album("Search Results");
+            album.setPhotosList(searchPics);
             Intent intent = new Intent(this, SearchResults.class);
             intent.putExtra("extra_user", user);
-            intent.putExtra("photos_list", (Serializable) searchPics);
+            intent.putExtra("extra_album", album);
             startActivityForResult(intent, 1);
 
         }
@@ -163,6 +167,30 @@ public class SearchPhotos extends AppCompatActivity {
             }
         }
         return results;
+
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent)
+    {
+        if (resultCode != RESULT_OK) {
+            return;
+        }
+
+        user = (User) getIntent().getSerializableExtra("extra_user");
+
+        ArrayAdapter<String> spinadapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, user.getTagTypes());
+        type1.setAdapter(spinadapter);
+        type1.setSelection(0);
+
+        type2.setAdapter(spinadapter);
+        type2.setSelection(0);
+
+        action.setChecked(false);
+        action.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                actionSearch = isChecked;
+            }
+        });
 
     }
 }

@@ -56,6 +56,13 @@ public class Album implements Serializable{
         }
         return null;
     }
+
+    public void setPhotosList(List<Photo> results)
+    {
+        album = results;
+        numOfPhotos = album.size();
+    }
+
     /***
      * Add Photo
      *
