@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
-class SearchResults extends AppCompatActivity {
+public class SearchResults extends AppCompatActivity {
 
     Album resultAlbum;
 

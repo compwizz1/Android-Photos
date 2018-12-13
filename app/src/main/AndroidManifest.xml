@@ -28,6 +28,7 @@
         <activity android:name=".MoveCopyPhoto"></activity>
         <activity android:name=".SearchPhotos"></activity>
         <activity android:name=".SearchResults"></activity>
+        <activity android:name=".SearchDisplay"></activity>
     </application>
 
 </manifest>
