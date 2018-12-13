@@ -119,7 +119,7 @@ public class SearchPhotos extends AppCompatActivity {
         {
             for(Photo j: i.getPhotos())
             {
-                if(j.containsTag(search))
+                if(j.searchTag(search))
                 {
                     results.add(j);
                 }
