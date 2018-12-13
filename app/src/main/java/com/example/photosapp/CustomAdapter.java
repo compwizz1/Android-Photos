@@ -1,6 +1,7 @@
 package com.example.photosapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -14,7 +15,10 @@ import java.util.List;
 
 import static android.support.v4.content.ContextCompat.getSystemService;
 
+
+
 public class CustomAdapter extends ArrayAdapter<Photo> {
+
     public CustomAdapter(Context context, int resourceid, List<Photo> photos) {
         super(context, resourceid, photos);
     }

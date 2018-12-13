@@ -37,6 +37,7 @@ public class AddPhoto extends AppCompatActivity {
     public void Add(View view){
         Intent photoPickerIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         photoPickerIntent.setType("image/*");
+        photoPickerIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         if(user == null)
             System.out.println("yes");
         else

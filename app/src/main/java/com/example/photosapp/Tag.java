@@ -55,6 +55,9 @@ public class Tag implements Serializable {
     {
         String type = tag.getTagName();
         String val = tag.getTagValue();
+        if(val.length() > this.getTagValue().length()){
+            return false;
+        }
         if(type.equals(this.getTagName()))
         {
             for(int i = 0; i < val.length(); i++)
