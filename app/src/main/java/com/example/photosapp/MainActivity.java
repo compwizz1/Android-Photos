@@ -1,6 +1,7 @@
 package com.example.photosapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -30,7 +31,21 @@ public class MainActivity extends AppCompatActivity {
 		    user = User.readUser(this);
             albumList = user.getAlbumList();
 		} catch (Exception e1) {
-			e1.printStackTrace();
+		    user = new User();
+		    user.addAlbum("Stock");
+		    String bird = "android.resource://" + "com.example.photosapp/" + "drawable/bird";
+            String cats = "android.resource://" + "com.example.photosapp/" + "drawable/cats";
+            String doggy = "android.resource://" + "com.example.photosapp/" + "drawable/doggy";
+            String fish = "android.resource://" + "com.example.photosapp/" + "drawable/fish";
+            String rabbits = "android.resource://" + "com.example.photosapp/" + "drawable/rabbits";
+            user.getAlbumFromName("Stock").addPhoto(new Photo(bird));
+            user.getAlbumFromName("Stock").addPhoto(new Photo(cats));
+            user.getAlbumFromName("Stock").addPhoto(new Photo(doggy));
+            user.getAlbumFromName("Stock").addPhoto(new Photo(fish));
+            user.getAlbumFromName("Stock").addPhoto(new Photo(rabbits));
+
+		    albumList = user.getAlbumList();
+
 		}
 
         create = findViewById(R.id.create);
