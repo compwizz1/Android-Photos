@@ -48,6 +48,9 @@ public class AddPhoto extends AppCompatActivity {
         finish();
 
     }
+    public void onBackPressed(){
+
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -125,6 +125,9 @@ public class PhotoTags extends AppCompatActivity {
 
 
     }
+    public void onBackPressed(){
+
+    }
 
     public void Back(View view)
     {

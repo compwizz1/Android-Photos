@@ -79,6 +79,9 @@ public class SearchDisplay extends AppCompatActivity {
             }
         }
     }
+    public void onBackPressed(){
+
+    }
 
     public void Previous(View view)
     {

@@ -42,6 +42,9 @@ public class RemoveAlbum extends AppCompatActivity {
         setResult(RESULT_OK, intent);
         finish();
     }
+    public void onBackPressed(){
+
+    }
 
     public void Cancel(View view)
     {

@@ -58,6 +58,9 @@ public class RenameAlbum extends AppCompatActivity {
         }
 
     }
+    public void onBackPressed(){
+
+    }
 
     public void Cancel(View view)
     {

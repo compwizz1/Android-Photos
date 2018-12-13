@@ -59,6 +59,9 @@ public class PhotoDisplay extends AppCompatActivity {
         }
 
     }
+    public void onBackPressed(){
+
+    }
 
     public void Next(View view)
     {

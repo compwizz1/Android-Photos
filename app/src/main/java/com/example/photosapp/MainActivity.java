@@ -110,6 +110,9 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, 3);
 
     }
+    public void onBackPressed(){
+
+    }
 
     public void Search(View view)
     {

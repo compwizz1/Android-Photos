@@ -65,6 +65,9 @@ public class SearchPhotos extends AppCompatActivity {
         });
 
     }
+    public void onBackPressed(){
+
+    }
 
     public void Search(View view)
     {

@@ -21,6 +21,9 @@ public class CreateAlbum extends AppCompatActivity {
 
     ListView listview;
 
+    public void onBackPressed(){
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

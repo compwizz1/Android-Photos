@@ -91,6 +91,9 @@ public class AlbumView extends AppCompatActivity {
 
 
     }
+    public void onBackPressed(){
+
+    }
 
     public void Display(View view)
     {

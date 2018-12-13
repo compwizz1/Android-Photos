@@ -61,6 +61,16 @@ class SearchResults extends AppCompatActivity {
         setResult(RESULT_OK, intent);
         finish();
     }
+    public void Display(View view){
+
+
+        Intent intent = new Intent(this, SearchDisplay.class);
+        intent.putExtra("extra_user", user);
+        intent.putExtra("extra_album",resultAlbum);
+        intent.putExtra("extra_photo", photos.get(index));
+        intent.putExtra("extra_index", index);
+        startActivityForResult(intent, 1);
+    }
 
     public void SelectPhoto(int position)
     {

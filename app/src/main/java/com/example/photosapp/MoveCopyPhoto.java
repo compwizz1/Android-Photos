@@ -85,6 +85,9 @@ public class MoveCopyPhoto extends AppCompatActivity {
         });
 
     }
+    public void onBackPressed(){
+
+    }
 
      public void SelectAlbum(int position)
      {
