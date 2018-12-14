@@ -60,8 +60,9 @@ public class AddPhoto extends AppCompatActivity {
             switch (requestCode) {
                 case GALLERY_REQUEST:
                     Uri selectedImage = data.getData();
+                    getContentResolver().takePersistableUriPermission(selectedImage, Intent.FLAG_GRANT_READ_URI_PERMISSION
+                            | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                     String uri = selectedImage.toString();
-                    System.out.println(uri);
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
                         user.getAlbumFromName(album.getName()).addPhoto(new Photo(uri));

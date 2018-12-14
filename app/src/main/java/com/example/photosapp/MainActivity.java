@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     User user = new User();
     TextView info;
     List<Album> albumList = user.getAlbumList();
-    int index;
+    int index = -1;
 
     private Button create, open, rename, remove, search;
 
@@ -88,6 +88,10 @@ public class MainActivity extends AppCompatActivity {
             info.setText("Error. No album to open");
             return;
         }
+        else if(index < 0 || index >= albumList.size()){
+            info.setText("Select an album first");
+            return;
+        }
         Album selected = albumList.get(index);
         Intent intent = new Intent(this, AlbumView.class);
         intent.putExtra("extra_user", user);
@@ -103,6 +107,10 @@ public class MainActivity extends AppCompatActivity {
             info.setText("Error. No album to rename");
             return;
         }
+        else if(index < 0 || index >= albumList.size()){
+            info.setText("Select an album first");
+            return;
+        }
         Album selected = albumList.get(index);
         Intent intent = new Intent(this, RenameAlbum.class);
         intent.putExtra("extra_user", user);
@@ -116,6 +124,10 @@ public class MainActivity extends AppCompatActivity {
         if (albumList.isEmpty())
         {
             info.setText("Error. No album to remove");
+            return;
+        }
+        else if(index < 0 || index >= albumList.size()){
+            info.setText("Select an album first");
             return;
         }
         Album selected = albumList.get(index);
@@ -158,10 +170,10 @@ public class MainActivity extends AppCompatActivity {
         listview = findViewById(R.id.listview);
         ArrayAdapter adapter = new ArrayAdapter<Album>(this, R.layout.album_text, albumList);
         listview.setAdapter(adapter);
-        if(!albumList.isEmpty()) {
-            listview.setSelection(0);
-            index = 0;
-        }
+//        if(!albumList.isEmpty()) {
+//            listview.setSelection(0);
+//            index = 0;
+//        }
         listview.setOnItemClickListener((p, V, pos, id) -> SelectAlbum(pos));
     }
 }

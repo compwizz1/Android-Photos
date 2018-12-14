@@ -32,7 +32,7 @@ public class PhotoTags extends AppCompatActivity {
 
     int photoIndex;
 
-    int tagIndex;
+    int tagIndex = -1;
 
     TextView error;
 
@@ -63,10 +63,10 @@ public class PhotoTags extends AppCompatActivity {
         adapter = new ArrayAdapter<Tag>(this, R.layout.album_text, tagList);
         listview.setAdapter(adapter);
 
-        if(!tagList.isEmpty()) {
-            listview.setSelection(0);
-            tagIndex = 0;
-        }
+//        if(!tagList.isEmpty()) {
+//            listview.setSelection(0);
+//            tagIndex = 0;
+//        }
         listview.setOnItemClickListener((p, V, pos, id) -> SelectTag(pos));
 
         ArrayAdapter<String> spinadapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, user.getTagTypes());
@@ -113,6 +113,10 @@ public class PhotoTags extends AppCompatActivity {
             return;
 
         }
+        else if(tagIndex < 0 || tagIndex >= tagList.size()){
+            error.setText("Select a tag first");
+            return;
+        }
         photo.removeTag(photo.getTags().get(tagIndex));
         try {
             User.writeUser(user, this);
@@ -128,6 +132,7 @@ public class PhotoTags extends AppCompatActivity {
     public void onBackPressed(){
 
     }
+
 
     public void Back(View view)
     {

@@ -24,7 +24,7 @@ public class AlbumView extends AppCompatActivity {
 
     TextView error;
 
-    int index;
+    int index = -1;
 
     CustomAdapter adapter;
 
@@ -49,9 +49,9 @@ public class AlbumView extends AppCompatActivity {
         adapter = new CustomAdapter(this, R.layout.photo_pic, photos);
         listview.setAdapter(adapter);
 
-        if(!photos.isEmpty()) {
-            listview.setSelection(0);
-        }
+//        if(!photos.isEmpty()) {
+//            listview.setSelection(0);
+//        }
         listview.setOnItemClickListener((p, V, pos, id) -> SelectPhoto(pos));
     }
 
@@ -108,6 +108,10 @@ public class AlbumView extends AppCompatActivity {
             error.setText("Error: No photos to display");
             return;
         }
+        else if(index < 0 || index >= photos.size()){
+            error.setText("Select a photo first");
+            return;
+        }
 
         Intent intent = new Intent(this, PhotoDisplay.class);
         intent.putExtra("extra_user", user);
@@ -161,9 +165,9 @@ public class AlbumView extends AppCompatActivity {
         CustomAdapter adapter = new CustomAdapter(this, R.layout.photo_pic, photos);
         listview.setAdapter(adapter);
 
-        if(!photos.isEmpty()) {
-            listview.setSelection(0);
-        }
+//        if(!photos.isEmpty()) {
+//            listview.setSelection(0);
+//        }
 //        listview.setOnItemClickListener((p, V, pos, id) -> SelectPhoto(pos));
     }
 
