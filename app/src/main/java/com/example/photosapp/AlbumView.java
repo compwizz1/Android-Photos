@@ -124,7 +124,10 @@ public class AlbumView extends AppCompatActivity {
             error.setText("Error: No photos to move/copy");
             return;
         }
-
+        else if(index < 0 || index >= photos.size()){
+            error.setText("Select a photo first");
+            return;
+        }
         Intent intent = new Intent(this, MoveCopyPhoto.class);
         intent.putExtra("extra_user", user);
         intent.putExtra("extra_album",album);
