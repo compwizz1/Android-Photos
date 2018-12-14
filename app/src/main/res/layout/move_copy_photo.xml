@@ -12,6 +12,7 @@
         android:layout_height="331dp"
         android:layout_marginStart="168dp"
         android:layout_marginTop="36dp"
+        android:listSelector="@color/design_default_color_primary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
