@@ -22,8 +22,6 @@ public class SearchResults extends AppCompatActivity {
 
     ListView listview;
 
-    TextView error;
-
     CustomAdapter adapter;
 
     User user;
@@ -37,7 +35,6 @@ public class SearchResults extends AppCompatActivity {
 
         display = findViewById(R.id.display);
         listview = findViewById(R.id.listview);
-        error = findViewById(R.id.error);
         back = findViewById(R.id.back);
 
         user = (User) getIntent().getSerializableExtra("extra_user");
