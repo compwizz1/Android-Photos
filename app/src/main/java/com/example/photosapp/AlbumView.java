@@ -80,6 +80,10 @@ public class AlbumView extends AppCompatActivity {
             error.setText("Error: No photos to remove");
             return;
         }
+        else if(index < 0 || index >= photos.size()){
+            error.setText("Select a photo first");
+            return;
+        }
         album.removePhoto(photos.get(index));
         try {
             User.writeUser(user, this);
@@ -88,6 +92,8 @@ public class AlbumView extends AppCompatActivity {
         }
         photos = album.getPhotos();
         adapter.notifyDataSetChanged();
+        listview.setSelection(0);
+
 
 
     }
